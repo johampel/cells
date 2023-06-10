@@ -33,6 +33,7 @@ import de.hipphampel.cells.resources.Resources;
 import de.hipphampel.cells.ui.cellculture.CellCultureView;
 import de.hipphampel.cells.ui.cellsystem.CellSystemView;
 import de.hipphampel.cells.ui.common.CloseApplicationDialog;
+import de.hipphampel.cells.ui.common.ConfirmationDialog;
 import de.hipphampel.cells.ui.common.MainContent;
 import de.hipphampel.cells.ui.common.UiUtils;
 import de.hipphampel.mv4fx.view.View;
@@ -82,7 +83,12 @@ public class App extends Application {
     }
 
     if (!saveAll(toBeSaved)) {
-
+      ConfirmationDialog confirmationDialog = new ConfirmationDialog(
+          Resources.getResource("application.confirmation.header.notAllSaved"),
+          Resources.getResource("application.confirmation.question.notAllSaved"));
+      if (!confirmationDialog.showAndWait().orElse(false)) {
+        evt.consume();
+      }
     }
   }
 
