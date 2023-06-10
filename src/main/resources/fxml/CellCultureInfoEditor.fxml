@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+
+    The MIT License
+    Copyright © 2023 Johannes Hampel
+
+    Permission is hereby granted, free of charge, to any person obtaining a copy
+    of this software and associated documentation files (the "Software"), to deal
+    in the Software without restriction, including without limitation the rights
+    to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+    copies of the Software, and to permit persons to whom the Software is
+    furnished to do so, subject to the following conditions:
+
+    The above copyright notice and this permission notice shall be included in
+    all copies or substantial portions of the Software.
+
+    THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+    IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+    FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+    AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+    LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+    OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+    THE SOFTWARE.
+
+-->
+
+<?import de.hipphampel.cells.ui.cellsystem.CellSystemComboBox?>
+<?import de.hipphampel.cells.ui.common.ValidationMarker?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<fx:root xmlns="http://javafx.com/javafx"
+         xmlns:fx="http://javafx.com/fxml"
+         type="VBox">
+
+  <ToolBar>
+    <Button fx:id="saveButton" styleClass="save16-icon, tool-bar-button" onAction="#onSaveCellCulture">
+      <tooltip>
+        <Tooltip text="%cellCultureInfoEditor.saveCellCultureButtonTooltip"/>
+      </tooltip>
+    </Button>
+    <Button fx:id="revertButton" styleClass="revert16-icon, tool-bar-button" onAction="#onRevertCellCulture">
+      <tooltip>
+        <Tooltip text="%cellCultureInfoEditor.revertCellCultureButtonTooltip"/>
+      </tooltip>
+    </Button>
+  </ToolBar>
+  <HBox styleClass="cells-content-area">
+    <GridPane styleClass="cells-content-area,cells-group" prefWidth="100000">
+
+      <HBox GridPane.columnIndex="0" GridPane.rowIndex="0" GridPane.columnSpan="2" styleClass="cells-group-title,cells-content-line">
+        <Label text="%cellCultureInfoEditor.commonPropertiesLabel"/>
+      </HBox>
+
+      <HBox GridPane.columnIndex="0" GridPane.rowIndex="1" styleClass="cells-content-label">
+        <Label text="%cellCultureInfoEditor.nameLabel"/>
+        <ValidationMarker fx:id="nameValidationMarker"/>
+      </HBox>
+      <TextField fx:id="nameTextField" GridPane.columnIndex="1" GridPane.rowIndex="1" GridPane.hgrow="ALWAYS"/>
+
+      <HBox GridPane.columnIndex="0" GridPane.rowIndex="2" styleClass="cells-content-label" GridPane.vgrow="ALWAYS">
+        <Label text="%cellCultureInfoEditor.descriptionLabel"/>
+        <ValidationMarker fx:id="descriptionValidationMarker"/>
+      </HBox>
+      <TextArea fx:id="descriptionTextArea" GridPane.columnIndex="1" GridPane.rowIndex="2" GridPane.rowSpan="3" GridPane.hgrow="ALWAYS"
+                wrapText="true" prefWidth="0" prefRowCount="4"/>
+
+      <HBox GridPane.columnIndex="2" GridPane.rowIndex="1" styleClass="cells-content-label">
+        <Label text="%cellCultureInfoEditor.dimensionsLabel"/>
+        <ValidationMarker fx:id="dimensionsValidationMarker"/>
+      </HBox>
+      <HBox GridPane.columnIndex="3" GridPane.rowIndex="1" GridPane.hgrow="SOMETIMES" styleClass="cells-content-line">
+        <Label text="%cellCultureInfoEditor.widthLabel"/>
+        <Label fx:id="widthLabel"/>
+        <Label text="%cellCultureInfoEditor.heightLabel"/>
+        <Label fx:id="heightLabel"/>
+        <Label text="%cellCultureInfoEditor.cellTypeCountLabel"/>
+        <Label fx:id="cellTypeCountLabel"/>
+      </HBox>
+
+      <Button fx:id="changeDimensionButton" text="%cellCultureInfoEditor.changeDimensionButton" GridPane.columnIndex="3"
+              GridPane.rowIndex="2" GridPane.hgrow="NEVER" onAction="#onChangeDimensions"/>
+
+      <CheckBox fx:id="wrapBordersCheckbox" text="%cellCultureInfoEditor.wrapBordersCheckbox" GridPane.columnIndex="3" GridPane.rowIndex="3"
+                GridPane.hgrow="NEVER"/>
+
+      <HBox GridPane.columnIndex="2" GridPane.rowIndex="4" styleClass="cells-content-label">
+        <Label text="%cellCultureInfoEditor.preferredCellSystem"/>
+        <ValidationMarker fx:id="preferredCellSystemValidationMarker"/>
+      </HBox>
+      <CellSystemComboBox fx:id="preferredCellSystemCombobox" GridPane.columnIndex="3" GridPane.rowIndex="4" GridPane.hgrow="NEVER"/>
+
+    </GridPane>
+  </HBox>
+</fx:root>

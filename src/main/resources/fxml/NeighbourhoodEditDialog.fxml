@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+
+    The MIT License
+    Copyright © 2023 Johannes Hampel
+
+    Permission is hereby granted, free of charge, to any person obtaining a copy
+    of this software and associated documentation files (the "Software"), to deal
+    in the Software without restriction, including without limitation the rights
+    to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+    copies of the Software, and to permit persons to whom the Software is
+    furnished to do so, subject to the following conditions:
+
+    The above copyright notice and this permission notice shall be included in
+    all copies or substantial portions of the Software.
+
+    THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+    IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+    FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+    AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+    LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+    OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+    THE SOFTWARE.
+
+-->
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<fx:root xmlns:fx="http://javafx.com/fxml"
+  type="VBox"
+  styleClass="neighbourhood-edit-dialog"
+  stylesheets="@../css/cells.css">
+
+  <HBox>
+    <Label text="%neighbourhoodEditDialog.radiusLabel" GridPane.rowIndex="0" GridPane.columnIndex="0"/>
+    <ComboBox fx:id="radiusComboBox" GridPane.rowIndex="0" GridPane.columnIndex="1"/>
+    <HBox HBox.hgrow="ALWAYS"/>
+    <ToolBar>
+      <Button styleClass="zero16-icon, tool-bar-button" onAction="#onFillWithZeros">
+        <tooltip>
+          <Tooltip text="%neighbourhoodEditDialog.fillZeroButtonTooltip"/>
+        </tooltip>
+      </Button>
+      <Button styleClass="one16-icon, tool-bar-button" onAction="#onFillWithOnes">
+        <tooltip>
+          <Tooltip text="%neighbourhoodEditDialog.fillOneButtonTooltip"/>
+        </tooltip>
+      </Button>
+      <Separator/>
+      <Button fx:id="resetButton" styleClass="revert16-icon, tool-bar-button" onAction="#onResetNeighbourhood">
+        <tooltip>
+          <Tooltip text="%neighbourhoodEditDialog.resetButtonTooltip"/>
+        </tooltip>
+      </Button>
+    </ToolBar>
+  </HBox>
+
+  <GridPane fx:id="spinnerContainer" GridPane.rowIndex="1" GridPane.columnIndex="0" GridPane.columnSpan="2"/>
+
+</fx:root>

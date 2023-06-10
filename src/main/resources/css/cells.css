@@ -1,0 +1,431 @@
+/**
+ * The MIT License
+ * Copyright © 2023 Johannes Hampel
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the "Software"), to deal
+ * in the Software without restriction, including without limitation the rights
+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
+ *
+ * The above copyright notice and this permission notice shall be included in
+ * all copies or substantial portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+ * THE SOFTWARE.
+ */
+/*
+ * FX Overwrites
+ */
+
+
+.spinner > .text-field {
+  -fx-pref-width: 4.333em;
+  -fx-alignment: center-right;
+}
+.spinner .increment-arrow-button {
+  -fx-padding: 0.333em 0.333em 0.333em 0.333em;
+}
+.spinner .decrement-arrow-button {
+  -fx-padding: 0.333em 0.333em 0.333em 0.333em;
+}
+
+.split-pane {
+  -fx-background-color: transparent;
+}
+
+.combo-box > .list-cell:filled:focused:selected > .label {
+  -fx-text-fill: black !important;
+
+}
+
+/*
+ * Common Cells stuff
+ */
+
+.cells-content-area {
+  -fx-vgap: 10;
+  -fx-hgap: 10;
+  -fx-spacing: 10;
+  -fx-padding: 10 10 10 10;
+}
+
+.cells-inner-content-area {
+  -fx-vgap: 10;
+  -fx-hgap: 10;
+  -fx-spacing: 10;
+}
+
+.cells-content-label {
+  -fx-spacing: 5;
+  -fx-alignment: center-right;
+}
+
+.cells-content-line {
+  -fx-spacing: 5;
+  -fx-alignment: center-left;
+}
+
+.cells-large {
+  -fx-font-size: 2em;
+}
+
+.cells-group {
+  -fx-border-color: lightgrey;
+  -fx-border-radius: 5px;
+  -fx-background-color: linear-gradient(from 0px 0px to 0px 100px, white, transparent);
+  -fx-padding: 10 10 10 10;
+}
+
+.cells-group-title {
+  -fx-font-weight: bold;
+  -fx-font-family: SansSerif;
+  -fx-padding: 0.5em 0 0.5em 0;
+}
+
+.cells-header {
+  -fx-background-color: white;
+  -fx-background-insets: 7 0 0 0;
+  -fx-pref-height: 64px;
+  -fx-min-height: 64px;
+  -fx-max-height: 64px;
+  -fx-border-color: linear-gradient(to bottom, transparent, white) transparent linear-gradient(to right, cornflowerblue, transparent) transparent;
+  -fx-border-width: 7 0 1 0;
+  -fx-padding: 5 15 10 15;
+  -fx-alignment: center-left;
+  -fx-font-size: 2em;
+}
+
+.cells-popup {
+  -fx-background-color: white;
+  -fx-background-radius: 3;
+  -fx-padding: 5 10 5 10;
+  -fx-border-color: darkgrey;
+  -fx-border-radius: 3;
+  -fx-border-insets: 1;
+}
+
+/*
+ * CellTypeRenderer
+ */
+
+CellTypeRenderer {
+  -fx-max-width: 15em;
+}
+
+/*
+ * NeighbourhoodEditDialog
+ */
+
+.neighbourhood-edit-dialog > HBox {
+  -fx-spacing: 5;
+  -fx-padding: 0 0 10 0;
+  -fx-alignment: center-left;
+}
+
+.neighbourhood-edit-dialog > GridPane > HBox {
+}
+
+.neighbourhood-edit-dialog > GridPane > HBox > Spinner {
+  -fx-border-width: 0;
+}
+
+.neighbourhood-edit-dialog > GridPane > HBox.center {
+  -fx-border-width: 1 1 0 0;
+  -fx-border-color: black;
+  -fx-background-color: gold;
+}
+
+.neighbourhood-edit-dialog > GridPane > HBox.middle {
+  -fx-border-width: 1 1 0 0;
+  -fx-border-color: black;
+}
+
+.neighbourhood-edit-dialog > GridPane > HBox.left-top {
+  -fx-border-width: 0 1 0 0;
+  -fx-padding: 2em 0 0 3em;
+  -fx-border-color: transparent linear-gradient(to bottom, transparent, black) transparent transparent;
+}
+
+.neighbourhood-edit-dialog > GridPane > HBox.top {
+  -fx-border-width: 0 1 0 0;
+  -fx-padding: 2em 0 0 0;
+  -fx-border-color: linear-gradient(to bottom, transparent, black);
+}
+
+.neighbourhood-edit-dialog > GridPane > HBox.right-top {
+  -fx-border-width: 0 0 0 0;
+  -fx-padding: 2em 0 0 0;
+}
+
+.neighbourhood-edit-dialog > GridPane > HBox.right {
+  -fx-border-width: 1 0 0 0;
+  -fx-padding: 0 3em 0 0;
+  -fx-border-color: linear-gradient(to right, black, transparent);
+}
+
+.neighbourhood-edit-dialog > GridPane > HBox.right-bottom {
+  -fx-border-width: 1 0 0 0;
+  -fx-padding: 0 3em 0 0;
+  -fx-border-color: linear-gradient(to right, black, transparent);
+}
+
+.neighbourhood-edit-dialog > GridPane > HBox.bottom {
+  -fx-border-width: 1 1 0 0;
+  -fx-padding: 0 0 2em 0;
+  -fx-border-color: black linear-gradient(to bottom, black, transparent) transparent transparent;
+}
+
+.neighbourhood-edit-dialog > GridPane > HBox.left-bottom {
+  -fx-border-width: 1 1 0 0;
+  -fx-padding: 0 0 0 3em;
+  -fx-border-color: linear-gradient(to left, black, transparent) linear-gradient(to bottom, black, transparent) transparent transparent;
+}
+
+
+.neighbourhood-edit-dialog > GridPane > HBox.left {
+  -fx-border-width: 1 1 0 0;
+  -fx-padding: 0 0 0 3em;
+  -fx-border-color: linear-gradient(to right, transparent, black);
+}
+
+/*
+ * Toolbar and buttons
+ */
+
+.tool-bar:horizontal {
+  -fx-background-color: transparent;
+  -fx-padding: 10 10 0 10;
+  -fx-spacing: 2;
+}
+
+.tool-bar:vertical {
+  -fx-background-color: transparent;
+  -fx-padding: 5;
+  -fx-spacing: 2;
+}
+
+.tool-bar-button {
+  -fx-background-color: transparent;
+  -fx-border-color: transparent;
+  -fx-padding: .25em;
+}
+
+.tool-bar-button:hover {
+  -fx-background-color: -fx-hover-base;
+  -fx-border-color: -fx-outer-border;
+}
+
+.tool-bar-button:armed {
+  -fx-background-color: -fx-pressed-base;
+  -fx-border-color: -fx-focus-color;
+}
+
+.tool-bar-button:selected {
+  -fx-background-color: -fx-pressed-base;
+  -fx-border-color: -fx-outer-border;
+}
+
+.inline-button {
+  -fx-background-color: transparent;
+  -fx-border-color: transparent;
+  -fx-padding: 0;
+}
+
+.inline-button:hover {
+  -fx-background-color: -fx-hover-base;
+  -fx-border-color: -fx-outer-border;
+}
+
+.inline-button:armed {
+  -fx-background-color: -fx-pressed-base;
+  -fx-border-color: -fx-focus-color;
+}
+
+.inline-button:selected {
+  -fx-background-color: -fx-pressed-base;
+  -fx-border-color: -fx-outer-border;
+}
+
+/*
+ * Icons
+ */
+
+.add16-icon {
+  -fx-graphic: url("../img/add16.png");
+}
+
+.add32-icon {
+  -fx-graphic: url("../img/add32.png");
+}
+
+.bottom16-icon {
+  -fx-graphic: url("../img/bottom16.png");
+}
+
+.cancel16-icon {
+  -fx-graphic: url("../img/cancel16.png");
+}
+
+.cellCulture16-icon {
+  -fx-graphic: url("../img/cellCulture16.png");
+}
+
+.cellCulture32-icon {
+  -fx-graphic: url("../img/cellCulture32.png");
+}
+
+.cellSystem16-icon {
+  -fx-graphic: url("../img/cellSystem16.png");
+}
+
+.cellSystem32-icon {
+  -fx-graphic: url("../img/cellSystem32.png");
+}
+
+.circle16-icon {
+  -fx-graphic: url("../img/circle16.png");
+}
+
+.confirm16-icon {
+  -fx-graphic: url("../img/confirm16.png");
+}
+
+.copy16-icon {
+  -fx-graphic: url("../img/copy16.png");
+}
+
+.down16-icon {
+  -fx-graphic: url("../img/down16.png");
+}
+
+.edit16-icon {
+  -fx-graphic: url("../img/edit16.png");
+}
+
+.empty16-icon {
+  -fx-graphic: url("../img/empty16.png");
+}
+
+.empty32-icon {
+  -fx-graphic: url("../img/empty32.png");
+}
+
+.error16-icon {
+  -fx-graphic: url("../img/error16.png");
+}
+
+.error32-icon {
+  -fx-graphic: url("../img/error32.png");
+}
+
+.fillCircle16-icon  {
+  -fx-graphic: url("../img/fillCircle16.png");
+}
+
+.fillRect16-icon {
+  -fx-graphic: url("../img/fillRect16.png");
+}
+
+.folder16-icon {
+  -fx-graphic: url("../img/folder16.png");
+}
+
+.grid16-icon {
+  -fx-graphic: url("../img/grid16.png");
+}
+
+.line16-icon {
+  -fx-graphic: url("../img/line16.png");
+}
+
+.maximize16-icon {
+  -fx-graphic: url("../img/maximize16.png");
+}
+
+.no16-icon {
+  -fx-graphic: url("../img/no16.png");
+}
+
+.one16-icon {
+  -fx-graphic: url("../img/one16.png");
+}
+
+.play16-icon {
+  -fx-graphic: url("../img/play16.png");
+}
+
+.play32-icon {
+  -fx-graphic: url("../img/play32.png");
+}
+
+.points16-icon {
+  -fx-graphic: url("../img/points16.png");
+}
+
+.paste16-icon {
+  -fx-graphic: url("../img/paste16.png");
+}
+
+.pause16-icon {
+  -fx-graphic: url("../img/pause16.png");
+}
+
+.question32-icon {
+  -fx-graphic: url("../img/question32.png");
+}
+
+.rect16-icon {
+  -fx-graphic: url("../img/rect16.png");
+}
+
+.remove16-icon {
+  -fx-graphic: url("../img/remove16.png");
+}
+
+.revert16-icon {
+  -fx-graphic: url("../img/revert16.png");
+}
+
+.save16-icon {
+  -fx-graphic: url("../img/save16.png");
+}
+
+.select16-icon {
+  -fx-graphic: url("../img/select16.png");
+}
+
+.step16-icon {
+  -fx-graphic: url("../img/step16.png");
+}
+
+.top16-icon {
+  -fx-graphic: url("../img/top16.png");
+}
+
+.undo16-icon {
+  -fx-graphic: url("../img/undo16.png");
+}
+
+.up16-icon {
+  -fx-graphic: url("../img/up16.png");
+}
+
+.warning16-icon {
+  -fx-graphic: url("../img/warning16.png");
+}
+
+.warning32-icon {
+  -fx-graphic: url("../img/warning32.png");
+}
+
+.zero16-icon {
+  -fx-graphic: url("../img/zero16.png");
+}
+

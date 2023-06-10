@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+
+    The MIT License
+    Copyright © 2023 Johannes Hampel
+
+    Permission is hereby granted, free of charge, to any person obtaining a copy
+    of this software and associated documentation files (the "Software"), to deal
+    in the Software without restriction, including without limitation the rights
+    to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+    copies of the Software, and to permit persons to whom the Software is
+    furnished to do so, subject to the following conditions:
+
+    The above copyright notice and this permission notice shall be included in
+    all copies or substantial portions of the Software.
+
+    THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+    IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+    FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+    AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+    LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+    OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+    THE SOFTWARE.
+
+-->
+
+<?import de.hipphampel.cells.ui.cellsystem.CellSystemLabel?>
+<?import de.hipphampel.cells.ui.cellsystem.NeighbourhoodRenderer?>
+<?import de.hipphampel.cells.ui.common.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<fx:root xmlns:fx="http://javafx.com/fxml"
+         type="HeaderPanel"
+         stylesheets="@../css/cells.css">
+  <header>
+    <VBox alignment="CENTER_LEFT">
+      <DecoratedObjectLabel>
+        <label><CellSystemLabel fx:id="headerLabel" large="true"/></label>
+        <decorations>
+          <ValidationMarkerDecoration large="true"/>
+        </decorations>
+      </DecoratedObjectLabel>
+    </VBox>
+  </header>
+  <content>
+    <VBox VBox.vgrow="ALWAYS">
+      <VBox VBox.vgrow="NEVER">
+        <ToolBar>
+          <Button fx:id="saveButton" styleClass="save16-icon, tool-bar-button" onAction="#onSaveCellSystem">
+            <tooltip>
+              <Tooltip text="%cellSystemView.saveCellSystemButtonTooltip"/>
+            </tooltip>
+          </Button>
+          <Button fx:id="revertButton" styleClass="revert16-icon, tool-bar-button" onAction="#onRevertCellSystem">
+            <tooltip>
+              <Tooltip text="%cellSystemView.revertCellSystemButtonTooltip"/>
+            </tooltip>
+          </Button>
+        </ToolBar>
+        <HBox styleClass="cells-content-area">
+          <GridPane styleClass="cells-content-area,cells-group" prefWidth="100000">
+
+            <HBox GridPane.columnIndex="0" GridPane.rowIndex="0" GridPane.columnSpan="2" styleClass="cells-group-title,cells-content-line">
+              <Label text="%cellSystemView.commonPropertiesLabel"/>
+            </HBox>
+
+            <HBox GridPane.columnIndex="0" GridPane.rowIndex="1" styleClass="cells-content-label">
+              <Label text="%cellSystemView.nameLabel"/>
+              <ValidationMarker fx:id="nameValidationMarker"/>
+            </HBox>
+            <TextField fx:id="nameTextField" GridPane.columnIndex="1" GridPane.rowIndex="1" GridPane.hgrow="ALWAYS"/>
+
+            <HBox GridPane.columnIndex="0" GridPane.rowIndex="2" styleClass="cells-content-label" fillHeight="false" >
+              <Label text="%cellSystemView.descriptionLabel" />
+              <ValidationMarker fx:id="descriptionValidationMarker" />
+            </HBox>
+            <TextArea fx:id="descriptionTextArea" GridPane.columnIndex="1" GridPane.rowIndex="2" GridPane.hgrow="ALWAYS"
+              GridPane.vgrow="ALWAYS" wrapText="true" prefRowCount="4" prefWidth="0"/>
+
+
+            <HBox GridPane.columnIndex="0" GridPane.rowIndex="3" styleClass="cells-content-label">
+              <Label text="%cellSystemView.neighbourhoodLabel"/>
+              <ValidationMarker fx:id="neighbourhoodValidationMarker"/>
+            </HBox>
+            <HBox GridPane.columnIndex="1" GridPane.rowIndex="3" GridPane.hgrow="ALWAYS" styleClass="cells-content-line">
+              <NeighbourhoodRenderer fx:id="neighbourhoodRenderer" width="24" height="24"/>
+              <Button fx:id="neighbourhoodEditButton" text="%cellSystemView.neighbourhoodEditButton" onAction="#onNeighbourhoodEdit"/>
+            </HBox>
+          </GridPane>
+          <VBox styleClass="cells-content-area,cells-group" HBox.hgrow="ALWAYS" prefWidth="100000">
+
+            <HBox styleClass="cells-group-title,cells-content-line">
+              <Label text="%cellSystemView.cellTypesLabel"/>
+              <ValidationMarker fx:id="cellTypesValidationMarker"/>
+            </HBox>
+
+            <HBox>
+              <ToolBar orientation="VERTICAL">
+                <Button fx:id="addCellTypeButton" styleClass="add16-icon, tool-bar-button" onAction="#onAddCellType">
+                  <tooltip>
+                    <Tooltip text="%cellSystemView.addCellTypeButtonTooltip"/>
+                  </tooltip>
+                </Button>
+                <Button fx:id="removeCellTypeButton" styleClass="remove16-icon, tool-bar-button" onAction="#onRemoveCellType"
+                  disable="true">
+                  <tooltip>
+                    <Tooltip text="%cellSystemView.removeCellTypeButtonTooltip"/>
+                  </tooltip>
+                </Button>
+              </ToolBar>
+
+              <ListView fx:id="cellTypesListView" HBox.hgrow="ALWAYS"/>
+
+              <ToolBar orientation="VERTICAL">
+                <Button fx:id="cellTypeTopButton" styleClass="top16-icon, tool-bar-button" onAction="#onCellTypeTop" disable="true">
+                  <tooltip>
+                    <Tooltip text="%cellSystemView.cellTypeTopButtonTooltip"/>
+                  </tooltip>
+                </Button>
+                <Button fx:id="cellTypeUpButton" styleClass="up16-icon, tool-bar-button" onAction="#onCellTypeUp" disable="true">
+                  <tooltip>
+                    <Tooltip text="%cellSystemView.cellTypeUpButtonTooltip"/>
+                  </tooltip>
+                </Button>
+                <Button fx:id="cellTypeDownButton" styleClass="down16-icon, tool-bar-button" onAction="#onCellTypeDown" disable="true">
+                  <tooltip>
+                    <Tooltip text="%cellSystemView.cellTypeDownButtonTooltip"/>
+                  </tooltip>
+                </Button>
+                <Button fx:id="cellTypeBottomButton" styleClass="bottom16-icon, tool-bar-button" onAction="#onCellTypeBottom"
+                  disable="true">
+                  <tooltip>
+                    <Tooltip text="%cellSystemView.cellTypeBottomButtonTooltip"/>
+                  </tooltip>
+                </Button>
+              </ToolBar>
+            </HBox>
+
+          </VBox>
+        </HBox>
+      </VBox>
+      <VBox VBox.vgrow="ALWAYS">
+        <HBox VBox.vgrow="ALWAYS">
+          <CellsViewGroup fx:id="cellTypesViewGroup" HBox.hgrow="ALWAYS"/>
+        </HBox>
+      </VBox>
+    </VBox>
+  </content>
+</fx:root>

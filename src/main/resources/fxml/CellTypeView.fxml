@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+
+    The MIT License
+    Copyright © 2023 Johannes Hampel
+
+    Permission is hereby granted, free of charge, to any person obtaining a copy
+    of this software and associated documentation files (the "Software"), to deal
+    in the Software without restriction, including without limitation the rights
+    to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+    copies of the Software, and to permit persons to whom the Software is
+    furnished to do so, subject to the following conditions:
+
+    The above copyright notice and this permission notice shall be included in
+    all copies or substantial portions of the Software.
+
+    THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+    IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+    FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+    AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+    LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+    OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+    THE SOFTWARE.
+
+-->
+
+<?import de.hipphampel.cells.ui.cellsystem.CellTypeComboBox?>
+<?import de.hipphampel.cells.ui.cellsystem.NeighbourhoodRenderer?>
+<?import de.hipphampel.cells.ui.cellsystem.RuleEditor?>
+<?import de.hipphampel.cells.ui.common.ValidationMarker?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<fx:root xmlns:fx="http://javafx.com/fxml"
+  type="HBox"
+  styleClass="cells-content-area"
+  stylesheets="@../css/cells.css">
+  <VBox styleClass="cells-group,cells-content-area" prefWidth="100000" HBox.hgrow="ALWAYS">
+    <HBox styleClass="cells-content-line,cells-group-title">
+      <Label text="%cellTypeView.commonPropertiesLabel"/>
+    </HBox>
+    <HBox>
+      <GridPane HBox.hgrow="ALWAYS" styleClass="cells-inner-content-area">
+        <HBox GridPane.columnIndex="0" GridPane.rowIndex="0" styleClass="cells-content-label">
+          <Label text="%cellTypeView.nameLabel"/>
+          <ValidationMarker fx:id="nameValidationMarker"/>
+        </HBox>
+        <TextField fx:id="nameTextField" GridPane.columnIndex="1" GridPane.rowIndex="0" GridPane.hgrow="ALWAYS"/>
+
+        <HBox GridPane.columnIndex="0" GridPane.rowIndex="1" styleClass="cells-content-label">
+          <Label text="%cellTypeView.colorLabel"/>
+          <ValidationMarker fx:id="colorValidationMarker"/>
+        </HBox>
+        <ColorPicker fx:id="colorPicker" GridPane.columnIndex="1" GridPane.rowIndex="1" GridPane.hgrow="ALWAYS"/>
+
+        <Label text="  " GridPane.columnIndex="2" GridPane.rowIndex="0" GridPane.rowSpan="2"/>
+
+        <HBox GridPane.columnIndex="3" GridPane.rowIndex="0" styleClass="cells-content-label">
+          <CheckBox fx:id="ownNeighbourhoodCheckBox" text="%cellTypeView.neighbourhoodCheckbox" onAction="#onOwnNeighbourhoodChanged"/>
+        </HBox>
+        <HBox fx:id="neighbourhoodBox" disable="true" GridPane.columnIndex="3" GridPane.rowIndex="1" styleClass="cells-content-line">
+          <ValidationMarker fx:id="neighbourhoodValidationMarker"/>
+          <NeighbourhoodRenderer fx:id="neighbourhoodRenderer" width="24" height="24"/>
+          <Button text="%cellTypeView.neighbourhoodEditButton" onAction="#onNeighbourhoodEdit"/>
+        </HBox>
+      </GridPane>
+    </HBox>
+    <HBox styleClass="cells-content-line,cells-group-title">
+      <Label text="%cellTypeView.rulesLabel"/>
+      <ValidationMarker fx:id="rulesValidationMarker"/>
+    </HBox>
+    <HBox VBox.vgrow="ALWAYS">
+      <ToolBar orientation="VERTICAL">
+        <Button styleClass="add16-icon, tool-bar-button" onAction="#onAddRule">
+          <tooltip>
+            <Tooltip text="%cellTypeView.addRuleButtonTooltip"/>
+          </tooltip>
+        </Button>
+        <Button fx:id="removeRuleButton" styleClass="remove16-icon, tool-bar-button" onAction="#onRemoveRule" disable="true">
+          <tooltip>
+            <Tooltip text="%cellTypeView.removeRuleButtonTooltip"/>
+          </tooltip>
+        </Button>
+      </ToolBar>
+
+      <ListView fx:id="rulesListView" HBox.hgrow="ALWAYS"/>
+
+      <ToolBar orientation="VERTICAL">
+        <Button fx:id="ruleTopButton" styleClass="top16-icon, tool-bar-button" onAction="#onRuleTop">
+          <tooltip>
+            <Tooltip text="%cellTypeView.ruleTopButtonTooltip"/>
+          </tooltip>
+        </Button>
+        <Button fx:id="ruleUpButton" styleClass="up16-icon, tool-bar-button" onAction="#onRuleUp">
+          <tooltip>
+            <Tooltip text="%cellTypeView.ruleUpButtonTooltip"/>
+          </tooltip>
+        </Button>
+        <Button fx:id="ruleDownButton" styleClass="down16-icon, tool-bar-button" onAction="#onRuleDown">
+          <tooltip>
+            <Tooltip text="%cellTypeView.ruleDownButtonTooltip"/>
+          </tooltip>
+        </Button>
+        <Button fx:id="ruleBottomButton" styleClass="bottom16-icon, tool-bar-button" onAction="#onRuleBottom">
+          <tooltip>
+            <Tooltip text="%cellTypeView.ruleBottomButtonTooltip"/>
+          </tooltip>
+        </Button>
+      </ToolBar>
+    </HBox>
+    <HBox styleClass="cells-content-line">
+      <Label text="%cellTypeView.defaultCellTypeLabel"/>
+      <CellTypeComboBox fx:id="defaultCellTypeComboBox"/>
+    </HBox>
+  </VBox>
+
+  <RuleEditor fx:id="ruleEditor" styleClass="cells-content-area,cells-group" HBox.hgrow="ALWAYS" prefWidth="100000">
+  </RuleEditor>
+
+</fx:root>

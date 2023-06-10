@@ -1,0 +1,180 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+
+    The MIT License
+    Copyright © 2023 Johannes Hampel
+
+    Permission is hereby granted, free of charge, to any person obtaining a copy
+    of this software and associated documentation files (the "Software"), to deal
+    in the Software without restriction, including without limitation the rights
+    to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+    copies of the Software, and to permit persons to whom the Software is
+    furnished to do so, subject to the following conditions:
+
+    The above copyright notice and this permission notice shall be included in
+    all copies or substantial portions of the Software.
+
+    THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+    IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+    FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+    AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+    LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+    OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+    THE SOFTWARE.
+
+-->
+
+<?import de.hipphampel.cells.ui.cellculture.CellCultureDataRenderer?>
+<?import de.hipphampel.cells.ui.cellculture.CellCultureInfoEditor?>
+<?import de.hipphampel.cells.ui.cellculture.CellCultureLabel?>
+<?import de.hipphampel.cells.ui.cellsystem.CellTypeComboBox?>
+<?import de.hipphampel.cells.ui.common.DecoratedObjectLabel?>
+<?import de.hipphampel.cells.ui.common.HeaderPanel?>
+<?import de.hipphampel.cells.ui.common.PlayButtonDecoration?>
+<?import de.hipphampel.cells.ui.common.ValidationMarkerDecoration?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<fx:root xmlns:fx="http://javafx.com/fxml"
+         type="VBox"
+         stylesheets="@../css/cells.css">
+
+  <HeaderPanel fx:id="infoHeaderPanel">
+    <header>
+      <VBox alignment="CENTER_LEFT">
+        <DecoratedObjectLabel>
+          <label>
+            <CellCultureLabel fx:id="headerLabel" large="true"/>
+          </label>
+          <decorations>
+            <PlayButtonDecoration large="true"/>
+            <ValidationMarkerDecoration large="true"/>
+          </decorations>
+        </DecoratedObjectLabel>
+      </VBox>
+    </header>
+    <content>
+      <CellCultureInfoEditor fx:id="cellCultureInfoEditor"/>
+    </content>
+  </HeaderPanel>
+  <StackPane VBox.vgrow="ALWAYS">
+    <VBox fx:id="dataVBox" styleClass="cells-inner-content-area" VBox.vgrow="ALWAYS">
+      <BorderPane>
+        <left>
+          <ToolBar>
+            <CellTypeComboBox fx:id="cellTypeComboBox"/>
+            <ToggleButton styleClass="select16-icon, tool-bar-button">
+              <tooltip>
+                <Tooltip text="%cellCultureView.selectDrawToolTooltip"/>
+              </tooltip>
+              <userData>select</userData>
+              <toggleGroup>
+                <ToggleGroup fx:id="toolGroup"/>
+              </toggleGroup>
+            </ToggleButton>
+            <ToggleButton fx:id="pasteDrawToolButton" styleClass="paste16-icon, tool-bar-button">
+              <tooltip>
+                <Tooltip text="%cellCultureView.pointsDrawToolTooltip"/>
+              </tooltip>
+              <userData>paste</userData>
+              <toggleGroup>
+                <fx:reference source="toolGroup"/>
+              </toggleGroup>
+            </ToggleButton>
+            <ToggleButton styleClass="points16-icon, tool-bar-button">
+              <tooltip>
+                <Tooltip text="%cellCultureView.pointsDrawToolTooltip"/>
+              </tooltip>
+              <userData>points</userData>
+              <toggleGroup>
+                <fx:reference source="toolGroup"/>
+              </toggleGroup>
+            </ToggleButton>
+            <ToggleButton styleClass="line16-icon, tool-bar-button">
+              <tooltip>
+                <Tooltip text="%cellCultureView.lineDrawToolTooltip"/>
+              </tooltip>
+              <userData>line</userData>
+              <toggleGroup>
+                <fx:reference source="toolGroup"/>
+              </toggleGroup>
+            </ToggleButton>
+            <ToggleButton styleClass="rect16-icon, tool-bar-button">
+              <tooltip>
+                <Tooltip text="%cellCultureView.rectDrawToolTooltip"/>
+              </tooltip>
+              <userData>rect</userData>
+              <toggleGroup>
+                <fx:reference source="toolGroup"/>
+              </toggleGroup>
+            </ToggleButton>
+            <ToggleButton styleClass="fillRect16-icon, tool-bar-button">
+              <tooltip>
+                <Tooltip text="%cellCultureView.fillRectDrawToolTooltip"/>
+              </tooltip>
+              <userData>fillRect</userData>
+              <toggleGroup>
+                <fx:reference source="toolGroup"/>
+              </toggleGroup>
+            </ToggleButton>
+            <ToggleButton styleClass="circle16-icon, tool-bar-button">
+              <tooltip>
+                <Tooltip text="%cellCultureView.circleDrawToolTooltip"/>
+              </tooltip>
+              <userData>circle</userData>
+              <toggleGroup>
+                <fx:reference source="toolGroup"/>
+              </toggleGroup>
+            </ToggleButton>
+            <ToggleButton styleClass="fillCircle16-icon, tool-bar-button">
+              <tooltip>
+                <Tooltip text="%cellCultureView.fillCircleDrawToolTooltip"/>
+              </tooltip>
+              <userData>fillCircle</userData>
+              <toggleGroup>
+                <fx:reference source="toolGroup"/>
+              </toggleGroup>
+            </ToggleButton>
+            <Separator/>
+            <Button fx:id="undoButton" styleClass="undo16-icon, tool-bar-button" onAction="#onUndo">
+              <tooltip>
+                <Tooltip text="%cellCultureView.fillCircleDrawToolTooltip"/>
+              </tooltip>
+            </Button>
+            <Separator/>
+            <Label fx:id="cellPositionLabel">
+              <tooltip>
+                <Tooltip text="%cellCultureView.positionLabelTooltip"/>
+              </tooltip>
+            </Label>
+          </ToolBar>
+        </left>
+        <right>
+          <ToolBar>
+            <Label text="%cellCultureView.scaleLabel"/>
+            <Spinner fx:id="scaleSpinner">
+              <valueFactory>
+                <SpinnerValueFactory.IntegerSpinnerValueFactory min="1" max="30"/>
+              </valueFactory>
+            </Spinner>
+            <ToggleButton fx:id="gridToggleButton" styleClass="grid16-icon, tool-bar-button">
+              <tooltip>
+                <Tooltip text="%cellCultureView.showOrHideGridToggleButtonTooltip"/>
+              </tooltip>
+            </ToggleButton>
+            <Button styleClass="maximize16-icon, tool-bar-button" onAction="#onMaximizeOrRestore">
+              <tooltip>
+                <Tooltip text="%cellCultureView.maximizeOrRestoreButtonTooltip"/>
+              </tooltip>
+            </Button>
+          </ToolBar>
+        </right>
+      </BorderPane>
+      <HBox VBox.vgrow="ALWAYS">
+        <CellCultureDataRenderer fx:id="cellCultureDataRenderer" HBox.hgrow="ALWAYS"/>
+      </HBox>
+    </VBox>
+    <VBox fx:id="noDataVBox" styleClass="cells-inner-content-area" alignment="CENTER">
+      <Label text="%cellCultureView.noDataVisibleMessage" VBox.vgrow="ALWAYS" style="-fx-font-size: large;"/>
+    </VBox>
+  </StackPane>
+</fx:root>
