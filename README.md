@@ -30,7 +30,7 @@ Is *very* welcome. I am interested in:
 - etc
 
 
-# Open issues
+## Open issues
 - Localization for further languages.
 - There are smaller bugs in it, but as far as I can see no showstopper
 - Improving UX by more support of shortcuts
